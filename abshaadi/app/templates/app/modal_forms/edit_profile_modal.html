@@ -1,4 +1,63 @@
 
+{% comment %} Package Information {% endcomment %}
+
+<div class="modal" tabindex="-1" role="dialog" id="package_Modal" style="background-color:#464e4ec2;" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+			
+			<form method="post" id="package_Modal" action="{% url "package_info" %}" class="post-form" enctype="multipart/form-data"> 
+				{% csrf_token %}
+				
+				<div class="modal-header">
+					<h5 class="modal-title">Edit Summary Information</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+				<div class="modal-body" style="font-size:80%">
+					<div class="row" style="margin-top:0px; padding-left:10px; padding-right:10px;">
+						<div class="col-2" style="line-height: 35px;">
+							Package Name:
+						</div>
+						<div class="col-4">
+							{{package.package_name}}
+						</div>
+						<div class="col-2" style="line-height: 35px;">
+							Value:
+						</div>
+						<div class="col-4">
+							{{package.value}}
+						</div>
+						<div class="col-2" style="line-height: 35px;">
+							Tenure:
+						</div>
+						<div class="col-4">
+							{{package.tenure}}
+						</div>	
+						<div class="col-2" style="line-height: 35px; text-align:right;">
+							Tenure Types
+						</div>
+						<div class="col-4">
+							{{package.tenure_types}}
+						</div>
+						<div class="col-4" style="line-height: 35px;">
+							Descriptions:
+						</div>
+						<div class="col-4">
+							{{package.description}}
+						</div>	
+					</div>				
+
+            	 </div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" style="width:80px;">Submit</button>
+					<button type="button" class="btn btn-warning" style="width:80px;" data-dismiss="modal">Cancel</button>
+				</div>
+            </form>
+        </div>
+    </div>
+</div> 
 
 <!-- My Summary Information -->
 
@@ -65,7 +124,7 @@
 							Name
 						</div>
 						<div class="col-4">
-							{{edit_form.fullname}}
+							{{edit_form.fullname|title }}
 						</div>						
 						<div class="col-2" style="line-height: 60px; text-align:right;">
 							Gender
@@ -85,7 +144,7 @@
 							Father's Name
 						</div>
 						<div class="col-4">
-							{{edit_form.father_name}}
+							{{edit_form.father_name|title }}
 						</div>
 					</div>
 					<div class="row" style="margin-top:10px; padding-left:10px; padding-right:10px;">
@@ -93,7 +152,7 @@
 							Mother's Name
 						</div>
 						<div class="col-4">
-							{{edit_form.mother_name}}
+							{{edit_form.mother_name|title }}
 						</div>
 						<div class="col-2" style="line-height: 60px;">
 							Date Of Birth
@@ -183,6 +242,7 @@
         </div>
     </div>
 </div> 
+
 <!-- Other Details -->
 
 

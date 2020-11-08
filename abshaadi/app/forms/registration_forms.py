@@ -103,7 +103,7 @@ class SammaryForm(ModelForm):
         widgets = {
             
             'descriptions' : Textarea(attrs = {'class':'form-control'}),
-            'biodata' : FileInput(attrs = {'class':'form-control'}), 
+            'biodata' : FileInput(attrs = {'class':'form-control','accept':'application/pdf,docx',}), 
             
         }
            

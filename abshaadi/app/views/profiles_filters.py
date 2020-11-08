@@ -13,6 +13,7 @@ from app.models import *
 from app.forms import *
 from django.shortcuts import get_object_or_404
 from app.forms.registration_forms import RegisterForm,ProfileForm,OtherProfileForm,SammaryForm
+from app.forms.packages_forms import AddPackageForm
 from django.http import Http404
 from django.utils import timezone
 
@@ -50,6 +51,7 @@ class UserProfileView(View):
         try:
             profile_pic = ProfilePictures.objects.get(user=request.user, set_as_profile_pic=True)
             pro_pic = profile_pic.picture
+
             
         except:
             pro_pic = ""
@@ -63,7 +65,12 @@ class UserProfileView(View):
         self.data["edit_form"] = ProfileForm(instance=self.data["profile"])
         self.data["edit_form1"] = OtherProfileForm(instance=self.data["profile"])
         self.data["edit_form2"] = SammaryForm(instance=self.data["profile"])
-        # self.data["search_profile"] = search_forms.MyFiltersForm()
+        self.data["package"] = AddPackageForm()
+        # self.data['package_info']=Package.objects.get(user=request.user)
+        try:
+            self.data['package_info']=Package.objects.get(user=request.user)
+        except:
+            pass
         return render(request, self.template_name, self.data)
 
 
@@ -447,3 +454,40 @@ def partner_profile_view(request, user_id=None):
         
     return redirect('/page_403/')
     
+
+
+
+###############################################################
+#   Package 
+#
+###############################################################
+
+def package_info(request):
+    if request.POST:
+       
+        try:
+            profile = Profile.objects.get(user = request.user)
+        except:
+            return redirect('/page_403/') 
+        package_name=request.POST.get('package_name', None)
+        value=request.POST.get('value', None)
+        tenure=request.POST.get('tenure', None)
+        tenure_types=request.POST.get('tenure_types', None)
+        description=request.POST.get('description', None)
+        
+        print(package_name)
+        pro_like = Package(
+            package_name = package_name,
+            value = value,
+            tenure=tenure,
+            tenure_types=tenure_types,
+            user_id=profile.user_id,
+            description=description
+            
+        )       
+            
+        pro_like.save() 
+        
+        
+        return redirect('/profile/')
+    return redirect('/page_403/')

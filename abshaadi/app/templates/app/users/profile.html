@@ -9,9 +9,42 @@
 							<td colspan="2" class="bg-success" style="color:#FFFFFF;">
 								<span style="font-weight:bold; display:inline-block; line-height:30px;">Package Name</span>
 								<span style="font-size:11px; display:inline-block; float:right; text-align:right;">
-									Remaining Duration
-									</br>1Year
+									<button data-toggle="modal"  style="float:right; margin-right:-16px;  margin-top:-8px;" class="btn btn-info" data-toggle="modal" data-target="#package_Modal">
+									<i class="mdi mdi-plus"></i>Package
+								</button>
 								</span>
+							</td>
+						</tr>
+						<tr>
+							<td width="150px" style="text-align:left;">
+								<strong>Package Name:</strong>
+							</td>
+							<td>
+								<strong>:</strong> {{package_info.package_name|default_if_none:'-'}}
+							</td>
+						</tr>
+						<tr>
+							<td width="150px" style="text-align:left;">
+								<strong>Value</strong>
+							</td>
+							<td>
+								<strong>:</strong> {{package_info.value|default_if_none:'-'}}
+							</td>
+						</tr>
+						<tr>
+							<td width="150px" style="text-align:left;">
+								<strong>Tenure</strong>
+							</td>
+							<td>
+								<strong>:</strong> {{package_info.tenure_types|default_if_none:'-'}}
+							</td>
+						</tr>
+						<tr>
+							<td width="150px" style="text-align:left;">
+								<strong>Description</strong>
+							</td>
+							<td>
+								<strong>:</strong> {{package_info.description|default_if_none:'-'}}
 							</td>
 						</tr>
 					</table>
@@ -61,7 +94,7 @@
 								<strong>Fullname</strong>
 							</td>
 							<td>
-								<strong>:</strong> {{ profile.fullname }}
+								<strong>:</strong> {{ profile.fullname |title }}
 							</td>
 							<td width="150px" style="text-align:right;">
 								<strong>Gender</strong>
@@ -81,7 +114,7 @@
 								<strong>Father's Name</strong>
 							</td>
 							<td>
-								<strong>:</strong> {{ profile.father_name|default_if_none:'-' }}
+								<strong>:</strong> {{ profile.father_name|default_if_none:'-'|title  }}
 							</td>
 						</tr>
 						<tr>
@@ -89,13 +122,13 @@
 								<strong>Mother's Name</strong>
 							</td>
 							<td>
-								<strong>:</strong> {{ profile.mother_name|default_if_none:'-' }}
+								<strong>:</strong> {{ profile.mother_name|default_if_none:'-' |title }}
 							</td>
 							<td style="text-align:right;">
 								<strong>Date Of Birth</strong>
 							</td>
 							<td>
-								<strong>:</strong> {{ profile.dob|default_if_none:'-' }}
+								<strong>:</strong> {{ profile.dob|default_if_none:'-'|title  }}
 							</td>
 						</tr>
 						<tr>
@@ -103,12 +136,12 @@
 								<strong>Religion</strong>
 							</td>
 							<td>
-								<strong>:</strong> {{ profile.religion|default_if_none:'-' }}
+								<strong>:</strong> {{ profile.religion|default_if_none:'-' |title }}
 							</td>
 							<td style="text-align:right;">
 								<strong>Caste/Domination</strong>
 							</td>
-							<td><strong>:</strong> {{ profile.caste_creed|default_if_none:'-' }}</td>
+							<td><strong>:</strong> {{ profile.caste_creed|default_if_none:'-'|title  }}</td>
 						</tr>
 						<tr>
 							<td style="text-align:right;">
