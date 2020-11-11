@@ -9,7 +9,7 @@
 				{% csrf_token %}
 				
 				<div class="modal-header">
-					<h5 class="modal-title">Edit Summary Information</h5>
+					<h5 class="modal-title">Package Summary Information</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 					</button>
@@ -21,31 +21,31 @@
 							Package Name:
 						</div>
 						<div class="col-4">
-							{{package.package_name}}
+							{{packages.package_name}}
 						</div>
 						<div class="col-2" style="line-height: 35px;">
 							Value:
 						</div>
 						<div class="col-4">
-							{{package.value}}
+							{{packages.value}}
 						</div>
 						<div class="col-2" style="line-height: 35px;">
 							Tenure:
 						</div>
 						<div class="col-4">
-							{{package.tenure}}
+							{{packages.tenure}}
 						</div>	
 						<div class="col-2" style="line-height: 35px; text-align:right;">
 							Tenure Types
 						</div>
 						<div class="col-4">
-							{{package.tenure_types}}
+							{{packages.tenure_types}}
 						</div>
 						<div class="col-4" style="line-height: 35px;">
 							Descriptions:
 						</div>
 						<div class="col-4">
-							{{package.description}}
+							{{packages.description}}
 						</div>	
 					</div>				
 

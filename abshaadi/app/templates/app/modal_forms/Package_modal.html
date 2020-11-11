@@ -1,0 +1,45 @@
+<div class="modal" tabindex="-1" role="dialog" id="packageedit_Modal" style="background-color:#464e4ec2;" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+	<div class="row">
+
+	<div class="col">
+	
+		<div class="card-body" style="padding-top:10px; background:none;">
+			<table class="table table-bordered" style="margin:0px; padding:0px;">
+				<tr class="text-center"  style="font-weight:bold; background-color:#ae62e8; color:#FFFFFF;">
+					<td>Package Name</td>
+					<td>Description</td>
+					<td>Price</td>
+					<td>Tenure</td>
+					<td>Tenure Type</td>
+					
+				<tr>
+				
+				{% for package in packages_info %}
+				<tr style="font-size:12px;  background-color:#FFF">
+					<td style="padding:5px">{{ package.package_name }}</td>
+					<td style="padding:5px">{{ package.description }}</td>
+					<td style="padding:5px">{{ package.value }}</td>
+					<td style="padding:5px">{{ package.tenure }}</td>
+					<td style="padding:5px">{{ package.tenure_types }}</td>
+					<td>
+					<button  data-toggle="modal"  style="float:right; margin-right:-16px;  margin-top:-8px;" class="btn btn-info" data-toggle="modal" data-target="#package_Modal" id="package_Modal_view" value="{{package.id}}">
+									<i class="mdi mdi-plus"></i>Package {{package.id}}
+								</button></td>
+					<td><button type="button" class="btn btn-warning" style="width:80px;" data-dismiss="modal">Cancel</button></td>	
+				<tr>
+				{% endfor %}
+				
+			</table>
+		</div>
+    </div>
+</div> 
+        </div>
+    </div>
+</div> 
+<script>
+
+var csrf = '{{csrf_token}}';
+
+</script>

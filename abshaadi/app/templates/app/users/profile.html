@@ -9,7 +9,7 @@
 							<td colspan="2" class="bg-success" style="color:#FFFFFF;">
 								<span style="font-weight:bold; display:inline-block; line-height:30px;">Package Name</span>
 								<span style="font-size:11px; display:inline-block; float:right; text-align:right;">
-									<button data-toggle="modal"  style="float:right; margin-right:-16px;  margin-top:-8px;" class="btn btn-info" data-toggle="modal" data-target="#package_Modal">
+									<button  data-toggle="modal"  style="float:right; margin-right:-16px;  margin-top:-8px;" class="btn btn-info" data-toggle="modal" data-target="#packageedit_Modal" >
 									<i class="mdi mdi-plus"></i>Package
 								</button>
 								</span>
@@ -276,12 +276,16 @@
 						
 					</div>
 				</div>
-			</div>
+			</div>                                                                                                                                                                                                                                                                               
 		</div>
 	</div>
 </div>
 {% include 'app/modal_forms/profile_picture_modal.html' %}
-
+{% include 'app/modal_forms/Package_modal.html' %}
 {% include 'app/modal_forms/edit_profile_modal.html' %}
 
+<script>
 
+var csrf = '{{csrf_token}}';
+
+</script>

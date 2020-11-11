@@ -16,7 +16,7 @@ from app.forms.registration_forms import RegisterForm,ProfileForm,OtherProfileFo
 from app.forms.packages_forms import AddPackageForm
 from django.http import Http404
 from django.utils import timezone
-
+from django.views.decorators.csrf import csrf_exempt
 from django.utils import safestring
 
 from datetime import date, datetime
@@ -56,23 +56,23 @@ class UserProfileView(View):
         except:
             pro_pic = ""
             pass
+        if request.method=='GET':
+            val=request.GET.get("package_Modal_view")
+            print(val)
         
         self.data["pro_pic"] = pro_pic
         self.data["profile"] = Profile.objects.get(user=request.user)        
         self.data["gallery"] = ProfilePictures.objects.filter(user=request.user, set_as_profile_pic=False)
         self.data['abc']=1
-        
+        self.data['package']=Package.objects.get(id=1)
         self.data["edit_form"] = ProfileForm(instance=self.data["profile"])
         self.data["edit_form1"] = OtherProfileForm(instance=self.data["profile"])
         self.data["edit_form2"] = SammaryForm(instance=self.data["profile"])
-        self.data["package"] = AddPackageForm()
-        # self.data['package_info']=Package.objects.get(user=request.user)
-        try:
-            self.data['package_info']=Package.objects.get(user=request.user)
-        except:
-            pass
+        self.data['packages_info']=Package.objects.all()
+        self.data['packages']=AddPackageForm(instance=self.data["package"])
         return render(request, self.template_name, self.data)
-
+    
+    
 
 #******************************************************************************
 # USER PROFILE VIEW
@@ -462,6 +462,8 @@ def partner_profile_view(request, user_id=None):
 #
 ###############################################################
 
+
+
 def package_info(request):
     if request.POST:
        
@@ -476,6 +478,8 @@ def package_info(request):
         description=request.POST.get('description', None)
         
         print(package_name)
+        val=Package.objects.filter(package_name='Starter')
+        print(val.value)
         pro_like = Package(
             package_name = package_name,
             value = value,

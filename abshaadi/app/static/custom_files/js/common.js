@@ -365,4 +365,43 @@ $(function() {
 	return /\d/.test(String.fromCharCode(event.keyCode));
   });
 	
+
+
+//   function package_display(){
+// 	$("#packageedit_Modal").modal('show');
 	
+// 	$.post('/package_display/', function(data){
+// 		console.log('hhhhh')
+// 		if(data == 1){
+// 			localtion.reload();
+// 		}else{
+// 			$("#data_process_modal").modal('hide');	
+// 			if(data == 0){
+// 				alert("Invalid operation");
+// 			}
+// 			if(data == 2){
+// 				alert("User not Found, Contact Administrator");
+// 			}
+// 		}
+// 	});
+// }
+// function validate_package_display(elem){
+// 	console.log('hhhhh')
+// 	$.post("/package_display/", $(elem).serialize(), function(data){
+		
+// 		data = $.parseJSON(data);
+		
+// 		if(data["code"] == 1){
+// 			location.reload();			
+// 		}
+// 		else{
+// 			if(data["error"].length == 0) $(elem).find(".modal-body >  .error-div").empty().append(data["error"]);
+// 			else{				
+// 				$(elem).find(".modal-body >  .error-div").empty().append(data["error"]["caste_name"][0]);
+// 				$(elem).find(".modal-body >  .error-div").show();
+// 			}
+// 		}		
+// 	});
+	
+// 	return false;
+// }
