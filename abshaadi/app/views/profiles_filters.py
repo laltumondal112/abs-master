@@ -463,26 +463,11 @@ def partner_profile_view(request, user_id=None):
 
 
 def package_info(request):
-    # if request.POST:
-       
-    #     try:
-    #         profile = Profile.objects.get(user = request.user)
-    #     except:
-    #         return redirect('/page_403/') 
-    #     package_name=request.POST.get('package_name', None)
-    #     value=request.POST.get('value', None)
-    #     tenure=request.POST.get('tenure', None)
-    #     tenure_types=request.POST.get('tenure_types', None)
-    #     description=request.POST.get('description', None)
-        
-    #     print(package_name)
-    #     val=Package.objects.filter(package_name='Starter')
-    #     print(val.value)
-    pro_like = Profile(
-        package_id=1,   
-    )       
-        
-    pro_like.save() 
+    
+    profile = Profile.objects.get(user = request.user)
+    profile.package_id=1
+    profile.save()
+    
     
     
     return redirect('/profile/')
