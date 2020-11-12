@@ -1,4 +1,4 @@
-#
+ #
 # AUTHOR : LAWRENCE GANDHAR
 # 
 from django.views import View
@@ -50,12 +50,12 @@ class UserProfileView(View):
         
         try:
             profile_pic = ProfilePictures.objects.get(user=request.user, set_as_profile_pic=True)
-            pro_pic = profile_pic.picture
-
-            
+            pro_pic = profile_pic.picture                                                        
+          
         except:
             pro_pic = ""
             pass
+
         if request.method=='GET':
             val=request.GET.get("package_Modal_view")
             print(val)
@@ -70,6 +70,7 @@ class UserProfileView(View):
         self.data["edit_form2"] = SammaryForm(instance=self.data["profile"])
         self.data['packages_info']=Package.objects.all()
         self.data['packages']=AddPackageForm(instance=self.data["package"])
+
         return render(request, self.template_name, self.data)
     
     
@@ -173,8 +174,7 @@ def edit_personal_info(request):
             return redirect('/page_403/') 
 
         pers_info = ProfileForm(request.POST, instance=profile)
-        c=pers_info['country']
-        print(c)
+        
         if pers_info.is_valid():
             pers_info.save()            
         else:
@@ -465,33 +465,27 @@ def partner_profile_view(request, user_id=None):
 
 
 def package_info(request):
-    if request.POST:
+    # if request.POST:
        
-        try:
-            profile = Profile.objects.get(user = request.user)
-        except:
-            return redirect('/page_403/') 
-        package_name=request.POST.get('package_name', None)
-        value=request.POST.get('value', None)
-        tenure=request.POST.get('tenure', None)
-        tenure_types=request.POST.get('tenure_types', None)
-        description=request.POST.get('description', None)
+    #     try:
+    #         profile = Profile.objects.get(user = request.user)
+    #     except:
+    #         return redirect('/page_403/') 
+    #     package_name=request.POST.get('package_name', None)
+    #     value=request.POST.get('value', None)
+    #     tenure=request.POST.get('tenure', None)
+    #     tenure_types=request.POST.get('tenure_types', None)
+    #     description=request.POST.get('description', None)
         
-        print(package_name)
-        val=Package.objects.filter(package_name='Starter')
-        print(val.value)
-        pro_like = Package(
-            package_name = package_name,
-            value = value,
-            tenure=tenure,
-            tenure_types=tenure_types,
-            user_id=profile.user_id,
-            description=description
-            
-        )       
-            
-        pro_like.save() 
+    #     print(package_name)
+    #     val=Package.objects.filter(package_name='Starter')
+    #     print(val.value)
+    pro_like = Profile(
+        package_id=1,   
+    )       
         
-        
-        return redirect('/profile/')
-    return redirect('/page_403/')
+    pro_like.save() 
+    
+    
+    return redirect('/profile/')
+    # return redirect('/page_403/')
