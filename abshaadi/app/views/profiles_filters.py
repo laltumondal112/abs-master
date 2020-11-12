@@ -56,9 +56,7 @@ class UserProfileView(View):
             pro_pic = ""
             pass
 
-        if request.method=='GET':
-            val=request.GET.get("package_Modal_view")
-            print(val)
+        
         
         self.data["pro_pic"] = pro_pic
         self.data["profile"] = Profile.objects.get(user=request.user)        
